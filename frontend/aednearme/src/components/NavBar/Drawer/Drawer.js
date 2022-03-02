@@ -13,6 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Menu from '@mui/material/Menu';
 import { MenuItem } from "@mui/material";
 import MobileMenu from "../../DropdownMenu/MobileMenu";
+import "./Drawer.css";
 
 const useStyles = makeStyles(() => ({
   drawer: {

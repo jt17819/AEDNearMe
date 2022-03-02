@@ -1,4 +1,4 @@
-import { Button, FormControl, Paper, TextField } from '@mui/material'
+import { Button, FormControl, Paper, TextField , Card,  Grid, CssBaseline, Container,  Box} from '@mui/material';   
 import React, { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router'
@@ -67,38 +67,57 @@ const Register = () => {
   }  
 
   return (
+       
     <div style={{    padding: "40px", paddingBottom: "100px"   }}>
-        <h1 data-testid="heading">Register here</h1>
-        <FormControl margin="normal" data-testid="form">
-            <FormControl>
+        <CssBaseline /> 
+
+            <Container className="pb-5" style={{
+            paddingBottom: "10px",
+            paddingTop: "10px"
+            }}> 
+
+      <Paper 
+        component="form"
+        sx={{  display: 'flex', alignItems: 'center', maxWidth: 400  }}
+        style={{ background: 'rgba(0,0,0,0.3)' }}   
+        >
+        <FormControl className="form" margin='dense' style={{  margin: 'auto' }} >
+
+          <form >
+
+            <h1 style={{ alignText:'center'}}>Register here</h1>
+        <FormControl margin="normal">
+            <FormControl margin='dense' >
+
                 <TextField
                     name="username"
                     label="Username"
                     required={true}
                     onChange={handleUsername}/>
+
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="firstName"
                     label="First Name"
                     required={true}
                     onChange={handleFirstName}/>
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="lastName"
                     label="Last Name"
                     required={true}
                     onChange={handleLastName}/>
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="email"
                     label="Email"
                     required={true}
                     onChange={handleEmail}/> 
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="password"
                     label="Password"
@@ -106,7 +125,7 @@ const Register = () => {
                     required={true}
                     onChange={handlePassword}/> 
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="password2"
                     label="Confirm Password"
@@ -114,11 +133,20 @@ const Register = () => {
                     required={true}
                     onChange={handlePassword2}/> 
             </FormControl>
-            <FormControl>
+
+            <PasswordStrength password={password}/>
+
+
+            <FormControl margin='dense' >
             <Button variant="contained" onClick={newUser} data-testid='registerBtn'>Register</Button>
             </FormControl>
         </FormControl>
-        <PasswordStrength password={password}/>
+
+        </form>
+        </FormControl>
+
+        </Paper>
+        
         <div>
             <h2>Password must contain the following</h2>
             <ul>
@@ -128,6 +156,9 @@ const Register = () => {
                 <li>Cannot be similar to your name or common passwords such as: password, password123</li>
             </ul>
         </div>
+
+    </Container>
+
     </div>
   )
 }

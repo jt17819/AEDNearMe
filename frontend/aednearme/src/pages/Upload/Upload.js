@@ -1,26 +1,30 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import axios from 'axios';
+
 import { Button, FormControl, Input, InputLabel, MenuItem, Paper, Select, TextField } from '@mui/material'
+
 import { Grid, Container, makeStyles } from '@material-ui/core';
+
 import UploadMap from '../../components/UploadMap/UploadMap'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   
-    btn_box:{
-      marginTop: "30px",
-      display: 'flex',
-    },
-  
-    primary: {
-      border: "none",
-      background: "#000",
-      color: '#fff',
-      borderRadius: "0px",
-      padding: "10px 20px",
-      "&:hover": {
-        background: "#34495E",
-      }
-    },
+    
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: theme.spacing(2),
+    
+        '& .MuiTextField-root': {
+          margin: theme.spacing(1),
+          width: '300px',
+        },
+        '& .MuiButtonBase-root': {
+          margin: theme.spacing(2),
+        },
+      },
   
 }));
 
@@ -50,10 +54,18 @@ const Upload = () => {
               "Content-Type": "application/json",
             //   Authorization: "Bearer "+token 
             }),
-          
       }
+      if(!latitude || !longitude || !access || !comments){
+          return alert("Please fill in all fields")
+      }
+      if(sessionStorage.length == 0){
+          return alert("Please log in to submit a new AED")
+      }
+
       const result = await axios.post('http://localhost:8000/aed/upload/', data, options)
-    //   console.log(result)
+      if(result.status == 200){
+          return alert("Your location has been submitted to be approved")
+      }
   }  
 
   const handleLat = (e) => setLatitude(e.target.value);
@@ -110,11 +122,11 @@ const encodeImageFileAsURL = async (e) => {
             style={{
             paddingBottom: "100px",
             paddingTop: "20px",
-
-            
             }}>
 
-            <Grid container spacing={4} spacing={10}>
+            <Grid 
+                container spacing={4} 
+                spacing={10}>
 
                 <Grid
                     item
@@ -122,7 +134,7 @@ const encodeImageFileAsURL = async (e) => {
                     xs={12}
                     className=""
                     >
-                      {render}
+                        {sessionStorage.length !== 0 ? <h1>Welcome {sessionStorage.username}</h1> : <h1>Please log in to submit a new AED</h1>  }{render} 
                 </Grid>
 
                 <Grid item md={4} 
@@ -131,13 +143,21 @@ const encodeImageFileAsURL = async (e) => {
 
                     <h1 className={"display-2 mb-5 font-weight-bold" }>Submit new AED</h1>
 
-                    <FormControl color="secondary" >
+                    <Paper 
+                        component="form"
+                        sx={{ p: '20px', display: 'flex', alignItems: 'center', maxWidth: 400  }}
+                        style={{ background: 'rgba(0,0,0,0.3)' }}   
+                        >
 
-                        <FormControl margin="dense">
-                            <Input onChange={(e) => {encodeImageFileAsURL(e)}} type="file" />
+                        <FormControl className="form" margin='dense' style={{  margin: 'auto' }} >
 
-                            <Button variant="raised"
-                            >Upload img</Button> 
+                        <FormControl>
+                            <form className={classes.root}> 
+                                <Input onChange={(e) => {encodeImageFileAsURL(e)}} type="file" />
+
+                                <Button variant="raised"
+                                >Upload img</Button> 
+                            </form>
 
                         </FormControl>
         
@@ -160,6 +180,8 @@ const encodeImageFileAsURL = async (e) => {
                                     onChange={handleLng}
                                 />
                         </FormControl>
+
+
 
                         <FormControl margin="dense">
                             <InputLabel id="access-label">
@@ -186,15 +208,21 @@ const encodeImageFileAsURL = async (e) => {
                             />
                         </FormControl>
 
-                        <FormControl margin='dense' className={classes.btn_box} >
+                        
+                        <FormControl margin='dense'>
                             <Button variant="contained" 
-                            className={classes.primary}  
                             onClick={handleSubmit}
                             >Submit</Button>
                         </FormControl>
+
+
+                        </FormControl>
+
+                    </Paper>
+
                     
-                    </FormControl>
-                </Grid>
+
+                    </Grid>
             </Grid>
         </Container>
  

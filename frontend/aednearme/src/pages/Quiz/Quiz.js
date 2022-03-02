@@ -1,11 +1,25 @@
-import { Button, FormControl, InputLabel, MenuItem, Paper, Select } from '@material-ui/core';
-import React, {useState} from 'react'
-import axios from 'axios'
+import { Button, FormControl, Input, InputLabel, MenuItem, Paper, Select, TextField } from '@mui/material'
+import { Card, CssBaseline, Box } from '@mui/material'
+
+import { Grid, Container, makeStyles } from '@material-ui/core';
+
+
+import React, { useState, Fragment, useEffect } from 'react'
+import axios from 'axios';
+
+const useStyles = makeStyles(theme => ({
+    
+  title: {
+    textAlign: 'center'
+  },
+
+
+}));
 
 const Quiz = () => {
     let data 
     const baseUrl = 'http://localhost:8000/quiz/'
-    const [category, setCategory] = useState('CPR')
+    const [category, setCategory] = useState()
     const [questions, setQuestions] = useState([])
     const [correctAnswer, setCorrectAnswer] = useState([])
     const [options, setOptions] = useState([])
@@ -58,65 +72,108 @@ const Quiz = () => {
       setFinalScore(score.reduce((a,b) => a+b))
     } 
    
+    const classes = useStyles();
+
 
   return (
-    <div style={{ padding: "40px", paddingBottom: "100px" }}>
-    <Paper>
-    <FormControl>
-      <FormControl>
 
-        <InputLabel>Category</InputLabel>
-        <Select 
-          onChange={handleCategory}
-          value={category}
-          label="Category">
-          <MenuItem value='CPR'>CPR</MenuItem>
-          <MenuItem value='AED'>AED</MenuItem>
-          <MenuItem value='Choking'>Choking</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl>
-        <Button variant="contained" onClick={handleStart} >Start Quiz</Button>
+    <div style={{    padding: "40px", paddingBottom: "100px"   }}>
 
-      </FormControl>
-    </FormControl>
-    </Paper>
-   
+      <CssBaseline /> 
+
+      <Container 
+        className="pb-5" style={{
+          paddingBottom: "10px",
+          paddingTop: "10px"
+          }} >
+
+        <Paper 
+           
+          style={{ background: 'rgba(0,0,0,0)' }}   
+
+          >
+          <h1 className={classes.title} >QUIZ</h1>
+        </Paper>
+
+        <Paper
+          component="form"
+          sx={{ p: '20px', display: 'flex', alignItems: 'center' }}
+          style={{ background: 'rgba(0,0,0,0.3)' }}   
+          >
+          <FormControl className="form" margin='dense' style={{  margin: 'auto', width: '100%' }} >
+
+            <FormControl margin='dense'            
+              >
     
-         <div>
-         
-          <div>
-            <form>    
+              <FormControl>
+                <InputLabel >
+                  Select Category! 
+                </InputLabel>
 
-              {
-                !questions[0] ? '': questions.map((question, i) => {
-                  return (
-                  <div>
-                    <h3>
-                      Question {i+1}: {question}
-                    </h3>
-                    <input id={`q${i}o1`} type='radio' name={`question_${i}`} value={options[i][0]} onChange={handleScore}/>
-                    <label for={`q${i}o1`}>{options[i][0]}</label>
-                    <input id={`q${i}o2`} type='radio' name={`question_${i}`} value={options[i][1]} onChange={handleScore}/>
-                    <label for={`q${i}o2`}>{options[i][1]}</label>
-                    <input id={`q${i}o3`} type='radio' name={`question_${i}`} value={options[i][2]} onChange={handleScore}/>
-                    <label for={`q${i}o3`}>{options[i][2]}</label>
-                    <input id={`q${i}o4`} type='radio' name={`question_${i}`} value={options[i][3]} onChange={handleScore}/>
-                    <label for={`q${i}o4`}>{options[i][3]}</label>
-                    <br/>
-                    <br/>
-                    {i == 5 ? <Button variant='contained' type='submit' onClick={handleSubmit}>Submit</Button> :''}
-                  </div>
-                   )
-                  })
-              }
-            </form>
-          </div>
-          <div>
-            {finalScore ? <h3>Results: {finalScore}/{questions.length}</h3> : ""}
-          </div>
-         </div>
+                <Select 
+                  id="category"
+                  onChange={handleCategory}
+                  value={category}
+                  label="Select Category">
+                  <MenuItem value='CPR'>CPR</MenuItem>
+                  <MenuItem value='AED'>AED</MenuItem>
+                  <MenuItem value='Choking'>Choking</MenuItem>
+                </Select> 
+              </FormControl>
+
+              <FormControl margin='dense'
+                ><Button 
+                  variant="contained" 
+                  onClick={handleStart}
+                >Start Quiz</Button>
+              </FormControl>
+
+            </FormControl>
+          </FormControl>
+        </Paper>
+        </Container>
+               
+                <div>
+                  <form className="pb-5" style={{
+                    paddingBottom: "10px",
+                    paddingTop: "10px"
+                    }}> 
+          
+                    {
+                    !questions[0] ? '': questions.map((question, i) => {
+                      return (
+                        <div>
+                          <h3>
+                            Question {i+1}: {question}
+                          </h3>
+
+                          <input id={`q${i}o1`} type='radio' name={`question_${i}`} value={options[i][0]} onChange={handleScore}/>
+                          <label for={`q${i}o1`}>{options[i][0]}</label>
+                          <input id={`q${i}o2`} type='radio' name={`question_${i}`} value={options[i][1]} onChange={handleScore}/>
+                          <label for={`q${i}o2`}>{options[i][1]}</label>
+                          <input id={`q${i}o3`} type='radio' name={`question_${i}`} value={options[i][2]} onChange={handleScore}/>
+                          <label for={`q${i}o3`}>{options[i][2]}</label>
+                          <input id={`q${i}o4`} type='radio' name={`question_${i}`} value={options[i][3]} onChange={handleScore}/>
+                          <label for={`q${i}o4`}>{options[i][3]}</label>
+                          <br/>
+                          <br/>
+                          {i == 5 ? <Button variant='contained' type='submit' onClick={handleSubmit}>Submit</Button> :''}
+                        </div>
+          
+                      )
+                    })}
+                  </form>
+                </div>
+      
+                <div>
+                  {finalScore ? <h3>Results: {finalScore}/{questions.length}</h3> : ""}
+                </div>
+    
+
+      
     </div>
+
+
   )
 }
 

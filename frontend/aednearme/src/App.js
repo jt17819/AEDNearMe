@@ -17,6 +17,7 @@ import { Footer } from "./components/Footer/Footer.js";
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <NavBar />
