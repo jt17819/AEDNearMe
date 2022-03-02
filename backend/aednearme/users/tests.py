@@ -21,7 +21,7 @@ class TestViewsCase(TestCase):
     def test_register(self):
         user_details = {
             'username': 'test',
-            'password':'test',
+            'password':'123abc543',
             'email': 'test@test.com',
             'first_name': 'test',
             'last_name': 'case'
@@ -32,34 +32,33 @@ class TestViewsCase(TestCase):
     def test_login(self):
         user_details = {
             'username': 'test',
-            'password':'test',
+            'password':'123abc543',
             'email': 'test@test.com',
             'first_name': 'test',
             'last_name': 'case'
         }
         self.c.post(reverse('register'), user_details)
 
-        response = self.c.post(reverse('token_obtain_pair'), {'username': 'test', 'password': 'test' })
+        response = self.c.post(reverse('token_obtain_pair'), {'username': 'test', 'password': '123abc543' })
         print(response)
         self.assertEqual(response.status_code, 200)
 
     def test_logout(self):
         user_details = {
             'username': 'test',
-            'password':'test',
+            'password':'123abc543',
             'email': 'test@test.com',
             'first_name': 'test',
             'last_name': 'case'
         }
         self.c.post(reverse('register'), user_details)
 
-        response = self.c.post(reverse('token_obtain_pair'), {'username': 'test', 'password': 'test' })
+        response = self.c.post(reverse('token_obtain_pair'), {'username': 'test', 'password': '123abc543' })
         hold = response.content.decode('UTF-8')
-        token = json.loads(hold)['token']
-        print(token)
+        token = json.loads(hold)['refresh']
         response = self.c.post(
             reverse('logout'),
-            **{'Authorization': f'Token {token}'}
+            {'refresh_token': token}
         )
         self.assertEqual(response.status_code, 200)
 

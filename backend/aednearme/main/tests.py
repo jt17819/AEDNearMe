@@ -18,10 +18,10 @@ class BaseTestCase(TestCase):
             first_name="sdfgh",
             last_name="jhgfds",
             email='myemail@crazymail.com',
-            password='mypassword123'
+            password='123abc543'
         )
         cls.user.save()
-
+        user = User.objects.get(username='myusername')
         cls.defib = Defib.objects.create(
             address='123 Fenchurch Street',
             post_code='SW194TG',
@@ -32,7 +32,7 @@ class BaseTestCase(TestCase):
             access='public',
             approved=True,
             comments='asdfghjhgfdfghnb',
-            # user_id='myusername'
+            user_id=user
         )
         
 
@@ -97,10 +97,18 @@ class TestLoggedInViews(LoginRequiredMixin, BaseTestCase):
         # response = self.c.post(reverse('token_obtain_pair'), {'username': 'test', 'password': '123abc543' })
         # print(response)
         # # self.assertEqual(response.status_code, 200)
+        test_user1 = User.objects.create_user(
+            username='testuser12',
+            first_name='john',
+            last_name='doe',
+            email='johndoe@test.com',
+            password='1X<ISRUkw+tuK'
+            )
+        test_user1.save()
 
         self.c = Client()
-        self.c.login(username="testuser1", password="1X<ISRUkw+tuK")
-        
+        self.c.login(username="testuser12", password="1X<ISRUkw+tuK")
+        user = User.objects.get(username='testuser12')
         now = datetime.datetime.now()
         initial_defib_count = Defib.objects.count()
         response = self.c.post(reverse('create_defib'), {
@@ -113,7 +121,7 @@ class TestLoggedInViews(LoginRequiredMixin, BaseTestCase):
             'time_taken': now,
             'access': 'public',
             'approved': True,
-            'username': 'myusername',
+            'username': user,
             'comments': 'jytrdcvbhu7654'
         })
         # assert Defib.objects.filter(latitude='51.509865').exists()

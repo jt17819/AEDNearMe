@@ -11,6 +11,7 @@ djangorestframework-simplejwt = "*"
 tzdata = "*"
 pytest = "*"
 pytest-django = "*"
+atomicwrites = "*"
 
 [dev-packages]
 pytest-cov = "*"
