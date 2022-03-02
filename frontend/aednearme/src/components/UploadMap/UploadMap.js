@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { GoogleMap, useLoadScript, Marker, InfoWindow, LoadScript } from "@react-google-maps/api";
 import mapStyles from './mapStyles';
 import axios from 'axios'
-
+import { textAlign } from '@mui/system';
+import './UploadMap.css'
 
 const UploadMap = () => {
   const baseUrl = "http://127.0.0.1:8000"
@@ -24,8 +25,8 @@ const UploadMap = () => {
   
 
   const containerStyle = {
-      width: '60vw',
-      height: '60vh',
+    width: '100%',
+    height: '70vh',
   };
 
   // Hard coded center at Futureproof
@@ -59,14 +60,14 @@ const position = aedData.map((aed, index) => {
     return {
       lat: parseFloat(aed.lat),
       long: parseFloat(aed.long),
-      photo_url: aed.photo_url
+      photo_url: aed.photo_url,
+      address: aed.address,
+      postCode: aed.post_code,
+      what3words: aed.what3words_link
     }
 })
 
 const [selectedAED, setSelectedAED] = useState(null);
-
-
-
 
   return {
     markers,
@@ -105,11 +106,13 @@ const [selectedAED, setSelectedAED] = useState(null);
             onCloseClick={() => {
               setSelectedAED(null)
             }}>
-            <div>
-            <img width={"200px"} src={selectedAED.photo_url} />
+            <div id="info-window">
+            <img id="info-image" width={"200px"} src={selectedAED.photo_url} />
               <ul>
+                <li>Address: {selectedAED.address}</li>
                 <li>Latitude: {selectedAED.lat}</li>
                 <li>Longitude: {selectedAED.long}</li>
+                <li>What 3 words: <a href={`${selectedAED.what3words}`} target="_blank">Here</a></li>
               </ul>
             
             </div>
@@ -119,6 +122,9 @@ const [selectedAED, setSelectedAED] = useState(null);
         </GoogleMap>
 
         
+    <div style={{textAlign: "center"}}>
+      <h3>Click on the map to autofill coordinates</h3>
+    </div>
     </LoadScript>
   )}
 }

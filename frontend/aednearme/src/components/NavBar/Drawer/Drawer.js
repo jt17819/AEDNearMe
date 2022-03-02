@@ -13,6 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Menu from '@mui/material/Menu';
 import { MenuItem } from "@mui/material";
 import MobileMenu from "../../DropdownMenu/MobileMenu";
+import "./Drawer.css";
 
 const useStyles = makeStyles(() => ({
   drawer: {
@@ -49,6 +50,13 @@ const useStyles = makeStyles(() => ({
 function DrawerComponent() {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const handleLogout = () => {
+    sessionStorage.clear()
+    alert('You have been logged out')
+    window.location.reload()
+  }
+
   return (
     <>
       <Drawer 
@@ -98,7 +106,11 @@ function DrawerComponent() {
 
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/login" className={classes.link}>Signin</Link>
+            {
+                sessionStorage.getItem('accessToken') ?
+                <Link to="/" onClick={handleLogout} className={classes.link}>Logout</Link> :
+                <Link to="/login" className={classes.link}>Login</Link>
+              }
             </ListItemText>
           </ListItem>
 

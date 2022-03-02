@@ -17,6 +17,14 @@ export const NavBar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+
+  const handleLogout = () => {
+    sessionStorage.clear()
+    alert('You have been logged out')
+    window.location.reload()
+  }
+
+
   return (
     <AppBar className={classes.appbar}
     >
@@ -38,8 +46,13 @@ export const NavBar = () => {
               <MyMenu title="CPR" className={classes.mymenu} menuItems={cprArray} />
               <MyMenu title="Choking" className={classes.mymenu} menuItems={chokingArray} />
               <MyMenu title="Education Hub" className={classes.mymenu} menuItems={educationArray} />
+              {
+              sessionStorage.getItem('accessToken') ?
+              <Link to="/" onClick={handleLogout} className={classes.link}>Logout</Link> :
+              <Link to="/login" className={classes.link}>Login</Link>
+            }
 
-              <Link to="/login" className={classes.link}>Signin</Link>
+              
 
             </div>
    
@@ -74,33 +87,16 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     fontSize: "40px",
     fontWeight: "bolder",
-    lineHeight: "10px"
+    lineHeight: "10px",
   },
 
   link: {
     textDecoration: "none",
     color: "#fff",
     fontWeight: "bold",
-    
-    // 64f227 blight green color
-    // color: "#64f227",
     fontSize: "20px",
     marginLeft: theme.spacing(5),
 
-    // hover navbar items changes color
-    "&:hover": {
-      color: "#000",
-      borderBottom: "1px solid white",
-    },
-  },
-
-// DOES NOT WORK WAKAWAKAWAKA Why???
-  mymenu: {
-    textDecoration: "none",
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: "20px",
-    marginLeft: theme.spacing(5),
     // hover navbar items changes color
     "&:hover": {
       color: "#000",
@@ -113,7 +109,6 @@ const useStyles = makeStyles((theme) => ({
     position: "static",
     // ba181b dark red colour
     background: '#ba181b',
-
     // black line above NavBar
     "&:before": {
       width: "100%",

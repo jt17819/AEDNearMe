@@ -10,7 +10,6 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Upload from "./pages/Upload/Upload";
 import FAQ from "./pages/FAQ/FAQ";
-// import NotLogged from "./pages/NotLogged/NotLogged";
 
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/Footer/Footer.js";
@@ -18,6 +17,7 @@ import { Footer } from "./components/Footer/Footer.js";
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <NavBar />
@@ -31,7 +31,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/upload' element={<Upload />} />
           <Route path='/faq' element={<FAQ />} />
-          {/* <Route path='/logged' element={<NotLogged />} /> */}
+   
           <Route path='*' element={<p>nothing to see here, move on mate.</p>} />
       </Routes>
 

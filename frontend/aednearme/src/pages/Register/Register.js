@@ -1,12 +1,13 @@
-import { Button, FormControl, Paper, TextField } from '@mui/material'
+import { Button, FormControl, Paper, TextField , Card,  Grid, CssBaseline, Container,  Box} from '@mui/material';   
 import React, { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router'
+import PasswordStrength from '../../components/PasswordStrength/PasswordStrength'
 
 
 const Register = () => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [ username, setUsername ] = useState("")
   const [ email, setEmail ] = useState("")
@@ -14,7 +15,6 @@ const Register = () => {
   const [ password2, setPassword2 ] = useState("")
   const [ firstName, setFirstName ] = useState("")
   const [ lastName, setLastName ] = useState("")
-
 
   const handleUsername = (e) => setUsername(e.target.value)
   const handleEmail = (e) => setEmail(e.target.value)
@@ -25,7 +25,15 @@ const Register = () => {
 
   const newUser = async () => {
       if (password !== password2){
-          alert("Passwords do not match")
+          return alert("Passwords do not match")
+      }
+      let regex = /^.*(?=.{9,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$/;
+      if(!password.match(regex)){
+        return alert('Password not strong enough')
+      }
+
+      if(!username || !email || !firstName || !lastName || !password || !password2) {
+        return alert("Please fill in all fields")
       }
       const data = {
         "username": username,
@@ -58,55 +66,99 @@ const Register = () => {
     } else { alert('Server Error: failed to login') }
   }  
 
-    
-
-
   return (
-    <div style={{    padding: "40px"   }}>
-        <h1>Register here</h1>
+       
+    <div style={{    padding: "40px", paddingBottom: "100px"   }}>
+        <CssBaseline /> 
+
+            <Container className="pb-5" style={{
+            paddingBottom: "10px",
+            paddingTop: "10px"
+            }}> 
+
+      <Paper 
+        component="form"
+        sx={{  display: 'flex', alignItems: 'center', maxWidth: 400  }}
+        style={{ background: 'rgba(0,0,0,0.3)' }}   
+        >
+        <FormControl className="form" margin='dense' style={{  margin: 'auto' }} >
+
+          <form >
+
+            <h1 style={{ alignText:'center'}}>Register here</h1>
         <FormControl margin="normal">
-            <FormControl>
+            <FormControl margin='dense' >
+
                 <TextField
                     name="username"
                     label="Username"
+                    required={true}
                     onChange={handleUsername}/>
+
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="firstName"
                     label="First Name"
+                    required={true}
                     onChange={handleFirstName}/>
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="lastName"
                     label="Last Name"
+                    required={true}
                     onChange={handleLastName}/>
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="email"
                     label="Email"
+                    required={true}
                     onChange={handleEmail}/> 
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="password"
                     label="Password"
                     type="password"
+                    required={true}
                     onChange={handlePassword}/> 
             </FormControl>
-            <FormControl>
+            <FormControl margin='dense' >
                 <TextField
                     name="password2"
                     label="Confirm Password"
                     type="password"
+                    required={true}
                     onChange={handlePassword2}/> 
             </FormControl>
-            <FormControl>
+
+            <PasswordStrength password={password}/>
+
+
+            <FormControl margin='dense' >
             <Button variant="contained" onClick={newUser}>Register</Button>
             </FormControl>
         </FormControl>
+
+        </form>
+        </FormControl>
+
+        </Paper>
+        
+        <div>
+            <h2>Password must contain the following</h2>
+            <ul>
+                <li>Minimum 9 characters</li>
+                <li>Cannot be numerical only</li>
+                <li>Must contain at least one special charcter e.g. "!,#,$,%,&,?", upper case and lower case letters and one number</li>
+                <li>Cannot be similar to your name or common passwords such as: password, password123</li>
+            </ul>
+        </div>
+
+    </Container>
+
     </div>
   )
 }
