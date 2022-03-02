@@ -17,7 +17,7 @@ describe('Menu', () => {
   // Rendering
 
   it('renders welcome message', () => {
-    render(<MyMenu />, { wrapper: MemoryRouter })
+    render(<MyMenu menuItems={[]} />, { wrapper: MemoryRouter })
     expect(screen.getByTestId('span')).toBeInTheDocument();
   });
 
@@ -36,10 +36,10 @@ describe('Menu', () => {
   // Snapshot
 
   it('should take a snapshot', () => {
-    render(<MyMenu />, { wrapper: MemoryRouter })
-    const { asFragment } = render(<MyMenu />, { wrapper: MemoryRouter })
+    render(<MyMenu menuItems={[]}/>, { wrapper: MemoryRouter })
+    const { asFragment } = render(<MyMenu menuItems={[]}/>, { wrapper: MemoryRouter })
     
-    expect(asFragment(<MyMenu />)).toMatchSnapshot()
+    expect(asFragment(<MyMenu menuItems={[]}/>)).toMatchSnapshot()
   })
 
   

@@ -46,7 +46,7 @@ export const NavBar = () => {
               <MyMenu title="Education Hub" className={classes.mymenu} menuItems={educationArray} />
               {
               sessionStorage.getItem('accessToken') ?
-              <Link to="/" onClick={handleLogout} className={classes.link}>Logout</Link> :
+              <Link to="/" onClick={handleLogout} className={classes.link} data-testid="logout">Logout</Link> :
               <Link to="/login" className={classes.link}>Login</Link>
             }
 

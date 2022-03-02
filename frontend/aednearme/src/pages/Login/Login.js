@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     const result = await axios.post('http://localhost:8000/users/login/', data, options)
-    console.log(result)
+    // console.log(result)
 
     sessionStorage.setItem('accessToken', result.data.access)
     sessionStorage.setItem('refreshToken', result.data.refresh)

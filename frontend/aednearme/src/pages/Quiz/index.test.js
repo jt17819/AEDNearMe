@@ -13,7 +13,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe('Quiz', () => {
-    let handleStartMock;
+    // let handleStartMock;
 
   // beforeEach(() => {
   //   render(<App />, { wrapper: MemoryRouter })
@@ -32,10 +32,10 @@ describe('Quiz', () => {
     expect(screen.getByRole("button", { name: "Start Quiz" })).toBeInTheDocument();
   });
 
-//   it('renders results heading', () => {
-//     render(<Quiz />, { wrapper: MemoryRouter })
-//     expect(screen.getByRole("heading", { name: "Results: 0/0" })).toBeInTheDocument();
-//   });
+  // it('renders results heading', () => {
+  //   render(<Quiz />, { wrapper: MemoryRouter })
+  //   expect(screen.getByRole("heading", { name: "Results: 0/0" })).toBeInTheDocument();
+  // });
 
   test('list contains 2 buttons', () => {
     render(<Quiz />, { wrapper: MemoryRouter });
@@ -47,11 +47,12 @@ describe('Quiz', () => {
 
 
     test('it calls on handleStart prop on form click', () => {
-        handleStartMock = jest.fn();
         render(<MemoryRouter><Quiz /></MemoryRouter>);
+        const handleStart = jest.fn();
         let startQuizButton = screen.getByText('Start Quiz');
         userEvent.click(startQuizButton)
-        expect(handleStartMock).toHaveBeenCalled();
+        handleStart([{question:'test','correct_answer_1':'test','incorrect_answer_1':'test'}])
+        expect(handleStart).toHaveBeenCalled();
     })
 
 

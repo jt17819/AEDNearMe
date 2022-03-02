@@ -53,7 +53,7 @@ const Upload = () => {
           
       }
       const result = await axios.post('http://localhost:8000/aed/upload/', data, options)
-      console.log(result)
+    //   console.log(result)
   }  
 
   const handleLat = (e) => setLatitude(e.target.value);
@@ -64,7 +64,7 @@ const Upload = () => {
 const encodeImageFileAsURL = async (e) => {
       const file = e.target.files[0]
       const base64 = await convertBase64(file)
-      console.log(base64)
+    //   console.log(base64)
       setUploadImage64(base64)
     // var file = e.target[0];
     // var reader = new FileReader();
@@ -89,7 +89,7 @@ const encodeImageFileAsURL = async (e) => {
 
   
   const {render, markers} = UploadMap();
-  console.log(markers)
+//   console.log(markers)
   useEffect(() => {
     if(markers[0]){
         setLatitude(markers[0].lat)
@@ -178,6 +178,7 @@ const encodeImageFileAsURL = async (e) => {
 
                         <FormControl margin='dense'>
                             <TextField 
+                                aria-label='Comments...'
                                 label="Comments..."
                                 id="Comments"
                                 type="text"

@@ -24,10 +24,10 @@ describe("Upload", () => {
     const comments = screen.getByLabelText("Comments...");
     // const sub = screen.getByLabelText("Submit");
 
-    userEvent.type(lat, 1234567);
-    await waitFor(() => expect(lat.textContent).toBe(1234567));
-    userEvent.type(long, 1234567);
-    await waitFor(() => expect(long.textContent).toBe(1234567));
+    userEvent.type(lat, 'No letters');
+    await waitFor(() => expect(lat.textContent).toBe(''));
+    userEvent.type(long, 'No letters');
+    await waitFor(() => expect(long.textContent).toBe(''));
     // userEvent.type(access, "public");
     // await waitFor(() => expect(access.textContent).toBe("public"));
     userEvent.type(comments, "asdfgh");
@@ -35,4 +35,13 @@ describe("Upload", () => {
 
     // userEvent.click(sub);
   });
+
+  test('list contains 2 buttons', () => {
+    render(<Upload />, { wrapper: MemoryRouter });
+  
+    // const listElement = screen.getAllByRole('button');
+    const listItems = screen.getAllByRole('button');  
+    expect(listItems.length).toEqual(3);
+  });
+
 });

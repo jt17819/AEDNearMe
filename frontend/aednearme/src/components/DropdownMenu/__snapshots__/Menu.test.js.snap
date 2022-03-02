@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu should take a snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <span
+      aria-haspopup="true"
+      data-testid="span"
+      id="basic-button"
+      style="color: rgb(255, 255, 255); font-size: 20px; cursor: pointer; margin-left: 20px; font-weight: bold;"
+    />
+  </div>
+</DocumentFragment>
+`;

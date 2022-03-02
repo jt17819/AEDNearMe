@@ -17,12 +17,12 @@ describe('Mobile Menu', () => {
   // Rendering
 
   it('renders a button', () => {
-    render(<MobileMenu />, { wrapper: MemoryRouter })
+    render(<MobileMenu menuItems={[{title:'test',path:'test'}]}/>, { wrapper: MemoryRouter })
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   test('list contains 1 buttons', () => {
-    render(<MobileMenu />, { wrapper: MemoryRouter });
+    render(<MobileMenu menuItems={[{title:'test',path:'test'}]}/>, { wrapper: MemoryRouter });
   
     // const listElement = screen.getAllByRole('button');
     const listItems = screen.getAllByRole('button');
@@ -36,10 +36,10 @@ describe('Mobile Menu', () => {
   // Snapshot
 
   it('should take a snapshot', () => {
-    render(<MobileMenu />, { wrapper: MemoryRouter })
-    const { asFragment } = render(<MobileMenu />, { wrapper: MemoryRouter })
+    render(<MobileMenu menuItems={[{title:'test',path:'test'}]}/>, { wrapper: MemoryRouter })
+    const { asFragment } = render(<MobileMenu menuItems={[{title:'test',path:'test'}]}/>, { wrapper: MemoryRouter })
     
-    expect(asFragment(<MobileMenu />)).toMatchSnapshot()
+    expect(asFragment(<MobileMenu menuItems={[{title:'test',path:'test'}]}/>)).toMatchSnapshot()
   })
 
   

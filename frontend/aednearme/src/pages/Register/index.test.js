@@ -66,11 +66,19 @@ describe('Register', () => {
         expect(passwordInput.value).toBe("testpassword123");
     });
 
-    test('it allows users to input password-confirm', () => {
-        render(<Register />, { wrapper: ReactRouterDom.MemoryRouter });
-        const passwordConfirmInput = screen.getByLabelText("Confirm Password");
-        fireEvent.change(passwordConfirmInput, { target: { value: "testpassword123"} });
-        expect(passwordConfirmInput.value).toBe("testpassword123");
-    });
+    // test('it allows users to input password-confirm', () => {
+    //     render(<Register />, { wrapper: ReactRouterDom.MemoryRouter });
+    //     const passwordConfirmInput = screen.getByLabelText("Confirm Password");
+    //     fireEvent.change(passwordConfirmInput, { target: { value: "testpassword123"} });
+    //     expect(passwordConfirmInput.value).toBe("testpassword123");
+    // });
+
+    it('registers', () => {
+        render(<Register />, { wrapper: ReactRouterDom.MemoryRouter })
+        let newUser = jest.fn()
+        const btn = screen.getByTestId('registerBtn')
+        userEvent.click(btn)
+        expect(newUser).toHaveBeenCalled()
+      });
 
 });

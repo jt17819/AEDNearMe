@@ -107,7 +107,7 @@ function DrawerComponent() {
             <ListItemText>
             {
                 sessionStorage.getItem('accessToken') ?
-                <Link to="/" onClick={handleLogout} className={classes.link}>Logout</Link> :
+                <Link to="/" onClick={handleLogout} className={classes.link} data-testid="logout">Logout</Link> :
                 <Link to="/login" className={classes.link}>Login</Link>
               }
             </ListItemText>

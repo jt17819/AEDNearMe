@@ -48,14 +48,14 @@ const Register = () => {
           }),
     }
     const result = await axios.post('http://localhost:8000/users/register/', data, options)
-    console.log(result)
+    // console.log(result)
 
     if (result.status !== 201) {
         alert('Server Error: failed to register user')
     }
 
     const result2 = await axios.post('http://localhost:8000/users/login/', {"username": username, "password": password}, options)
-    console.log(result2)
+    // console.log(result2)
 
     sessionStorage.setItem('accessToken', result2.data.access)
     sessionStorage.setItem('refreshToken', result2.data.refresh)
@@ -115,7 +115,7 @@ const Register = () => {
                     onChange={handlePassword2}/> 
             </FormControl>
             <FormControl>
-            <Button variant="contained" onClick={newUser}>Register</Button>
+            <Button variant="contained" onClick={newUser} data-testid='registerBtn'>Register</Button>
             </FormControl>
         </FormControl>
         <PasswordStrength password={password}/>

@@ -3,19 +3,19 @@
 exports[`NavBar should take a snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary makeStyles-appbar-12 mui-fixed MuiPaper-elevation4"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary makeStyles-appbar-18 mui-fixed MuiPaper-elevation4"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        class="makeStyles-root-7"
+        class="makeStyles-root-13"
       >
         <div
           class=""
         >
           <a
-            class="makeStyles-logo-9"
+            class="makeStyles-logo-15"
             href="/"
           >
             AED 
@@ -24,10 +24,10 @@ exports[`NavBar should take a snapshot 1`] = `
           </a>
         </div>
         <div
-          class="makeStyles-navlinks-8"
+          class="makeStyles-navlinks-14"
         >
           <a
-            class="makeStyles-link-10"
+            class="makeStyles-link-16"
             href="/"
           >
             Home
@@ -73,7 +73,7 @@ exports[`NavBar should take a snapshot 1`] = `
             </span>
           </div>
           <a
-            class="makeStyles-link-10"
+            class="makeStyles-link-16"
             href="/login"
           >
             Login

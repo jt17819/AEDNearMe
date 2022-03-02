@@ -24,6 +24,14 @@ describe("NavBar", () => {
     //    expect(navigation.textContent).toMatch("");
     //  });
 
+    test('logout', () => {
+      sessionStorage.setItem('accessToken','test')
+      render(<NavBar />, {wrapper: MemoryRouter})
+      const logout = screen.getByTestId('logout');
+      userEvent.click(logout)
+      expect(sessionStorage.getItem('accessToken')).toEqual(null);
+  });
+
     it('should take a snapshot', () => {
         // render(<NavBar />, { wrapper: MemoryRouter })
         const { asFragment } = render(<NavBar />, { wrapper: MemoryRouter })

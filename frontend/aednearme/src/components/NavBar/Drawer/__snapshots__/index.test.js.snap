@@ -3,10 +3,10 @@
 exports[`Drawer should take a snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="makeStyles-logoBox-7"
+    class="makeStyles-logoBox-12"
   >
     <button
-      class="MuiButtonBase-root MuiIconButton-root makeStyles-icon-9"
+      class="MuiButtonBase-root MuiIconButton-root makeStyles-icon-14"
       sx="[object Object]"
       tabindex="0"
       type="button"
@@ -31,7 +31,7 @@ exports[`Drawer should take a snapshot 1`] = `
     </button>
     <span>
       <a
-        class="makeStyles-logo-10"
+        class="makeStyles-logo-15"
         href="/"
       >
         AED 

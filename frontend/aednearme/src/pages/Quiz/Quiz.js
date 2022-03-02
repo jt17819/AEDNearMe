@@ -16,7 +16,7 @@ const Quiz = () => {
     const handleCategory = (e) => setCategory(e.target.value)
 
     const handleScore = (e) => {
-      for (let i=0; i<correctAnswer.length; i++)  {
+      for (let i=0; i<score.length; i++)  {
         const newScore = score
         if (options[i].includes(e.target.value)) {
           if (e.target.value == correctAnswer[i]) {
@@ -46,7 +46,7 @@ const Quiz = () => {
       answers[4].push(data.correct_answer_5)
       answers.push(data.incorrect_answers_6.split(','))
       answers[5].push(data.correct_answer_6)      
-      console.log(answers)
+      // console.log(answers)
       setOptions(answers)
       setQuestions([data.question_1, data.question_2, data.question_3, data.question_4, data.question_5, data.question_6])
       setCorrectAnswer([data.correct_answer_1, data.correct_answer_2, data.correct_answer_3, data.correct_answer_4, data.correct_answer_5, data.correct_answer_6])
