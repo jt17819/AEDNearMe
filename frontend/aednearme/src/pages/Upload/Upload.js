@@ -118,17 +118,15 @@ const encodeImageFileAsURL = async (e) => {
 
                 <Grid
                     item
-                    md={7}
+                    md={8}
                     xs={12}
                     className=""
                     >
-                    
                       {render}
-                    
                 </Grid>
 
                 <Grid item md={4} 
-                style={{ paddingTop: "5px"}}
+                style={{ paddingTop: "14px", paddingBottom: "100px"}}
                     >
 
                     <h1 className={"display-2 mb-5 font-weight-bold" }>Submit new AED</h1>
@@ -172,8 +170,9 @@ const encodeImageFileAsURL = async (e) => {
                                 label="Access?"
                                 value={access}
                                 onChange={handleAccess}>
-                                <MenuItem value="Public Access">Public Access</MenuItem>
-                                <MenuItem value="Limited Access">Limited Access</MenuItem>
+                                <MenuItem value="public">Public Access</MenuItem>
+                                <MenuItem value="limited">Limited Access</MenuItem>
+                                <MenuItem value="unknown">Not sure?</MenuItem>
                             </Select>
                         </FormControl>
 

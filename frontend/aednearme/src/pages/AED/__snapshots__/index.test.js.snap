@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AEDhowto should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root pb-5 MuiContainer-maxWidthLg"
+    style="padding-bottom: 100px; padding-top: 20px;"
+  >
+    <h1
+      class="makeStyles-title-6"
+    >
+      How to use an AED
+    </h1>
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-5"
+      >
+        <h3
+          class="makeStyles-text-7"
+        >
+          Step 1: Have someone continue to perform CPR and follow the instructions of the defibrillator.
+        </h3>
+        <h3
+          class="makeStyles-text-7"
+        >
+          Step 2: Remove clothing from person's chest and find the pads. Peel off the plastic and place the pads indicated by the pictures onto the person. (One pad of the right side under collarbone, second pad on the left side below armpit)
+        </h3>
+        <h3
+          class="makeStyles-text-7"
+        >
+          Step 3: AED will analyse the person's heart rhythm. Stop chest compressions and wait for the AED's instructions
+        </h3>
+        <h3
+          class="makeStyles-text-7"
+        >
+          Step 4: If shock is advised, tell everyone to stand back and clear of the person. After shock is delivered start chest compressions when told to do so by AED.
+        </h3>
+        <h3
+          class="makeStyles-text-7"
+        >
+          Step 5: Leave the AED on as it will reanalyse heart rhythm and follow the instructions until help arrives
+        </h3>
+        <h3>
+          Read more here at 
+          <a
+            href="https://www.sja.org.uk/get-advice/first-aid-advice/how-to/how-to-use-a-defibrillator/?category=12349"
+            id="choking-link"
+            target="_blank"
+          >
+            St. John's Ambulance
+          </a>
+        </h3>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-7"
+      >
+        <div>
+          <div>
+            <div
+              style="width: 100%; height: 360px;"
+            >
+              <div
+                style="width: 100%; height: 100%;"
+              >
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

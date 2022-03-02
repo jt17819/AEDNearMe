@@ -35,17 +35,24 @@ const useStyles = makeStyles((theme) => ({
   item: {
     display: "flex",
     alignItems: "center",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "12px",
+    }
   },
 
   snsIcon: {
-    width: "40px",
-    height: "40px",
+    // width: "40px",
+    // height: "40px",
+    fontSize: "2.5rem !important",
+
     color: "#fff",
     // 64f227 bright green color
     margin: "10px",
     [theme.breakpoints.down("xs")]: {
-      width: "50px",
-      height: "30px",
+      // width: "50px",
+      // height: "30px",
+      fontSize: "1.6rem !important",
+
     },
   },
 
@@ -86,7 +93,8 @@ export const Footer = ({ setValue, setSelectedIndex }) => {
               // href="https://github.com/wotaque/mui-aed"
               className={classes.item}
             >
-              <CopyrightIcon fontSize="large"className={classes.snsIcon} />
+            <CopyrightIcon className={classes.snsIcon} />
+
               <p>2022 <br /> by Snake in the Flask </p>
             </Grid>
           </Grid>

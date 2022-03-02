@@ -29,6 +29,7 @@ export const MyMenu = (props) => {
                     marginLeft: '20px',
                     fontWeight: 'bold'
                 }}
+                data-testid="span"
             >
                 {props.title}
             </span>

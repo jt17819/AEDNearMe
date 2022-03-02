@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root pb-5 MuiContainer-maxWidthLg"
+    style="padding-bottom: 100px; padding-top: 20px;"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-5"
+      >
+        <h1
+          class="makeStyles-title-11"
+        >
+          IN A LIFE THREATENING EMERGENCY, CALL 999 or 112
+        </h1>
+        <p
+          class="makeStyles-text-12"
+        >
+          Use our location driven database to show your nearest AED.
+        </p>
+        <p
+          class="makeStyles-text-12"
+        >
+          An AED machine, or Automated External Defibrillator, is an essential component in first aid and safety.
+        </p>
+        <p
+          class="makeStyles-text-12"
+        >
+          Most of us have seen these units at airports, hospitals, schools, government buildings, nursing homes, first aid stations and even in our workplaces — But do we remember where we seen them ?
+        </p>
+        <div
+          class="makeStyles-btn_box-13"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-primary-14"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              How to use AED
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-secondary-15"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Add new Location
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-7"
+      >
+        <div>
+          <div />
+          <div>
+            Loading...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -63,11 +63,11 @@ const Login = () => {
                     onChange={handlePassword}/>
             </FormControl>
             <FormControl>
-                <Button variant="contained" onClick={handleLogin}>Login</Button>
+                <Button variant="contained" onClick={handleLogin} data-testid="submit">Login</Button>
             </FormControl>
         
             New user? 
-            <Button variant="contained" onClick={handleRegister}>Register here!</Button>
+            <Button variant="contained" name="register" onClick={handleRegister}>Register here!</Button>
         </FormControl>
     </div>
     

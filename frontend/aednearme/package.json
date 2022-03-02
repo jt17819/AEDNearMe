@@ -16,19 +16,23 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.0",
     "google-map-react": "^2.1.10",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-player": "^2.9.0",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
-    "web-vitals": "^2.1.4"
+    "react-test-renderer": "^17.0.2",
+    "web-vitals": "^2.1.4",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --setupFilesAfterEnv ./src/test/setupTests.js",
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts test --setupFilesAfterEnv ./src/test/setupTests.js --coverage --watchAll=false"
   },
   "browserslist": {
     "production": [
@@ -40,6 +44,16 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/pages/NotLogged/NotLogged.js",
+      "!src/components/UploadMap/mapStyles.js",
+      "!src/components/MainMap/mapStyles.js",
+      "!src/components/LoginPopup/LoginPopup.js"
     ]
   }
 }

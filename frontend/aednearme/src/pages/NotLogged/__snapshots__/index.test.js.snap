@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Not Logged should take a snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Sign in to register new AED
+    </h1>
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      To register a new AED that is currently not on our map, please sign in/sign up here
+    </p>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Login
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;

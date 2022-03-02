@@ -14,10 +14,9 @@ const Quiz = () => {
 
 
     const handleCategory = (e) => setCategory(e.target.value)
+
     const handleScore = (e) => {
-     
       for (let i=0; i<correctAnswer.length; i++)  {
-        console.log(e.target.value == correctAnswer[i])
         const newScore = score
         if (options[i].includes(e.target.value)) {
           if (e.target.value == correctAnswer[i]) {
@@ -28,7 +27,6 @@ const Quiz = () => {
             newScore[i]=0
             setScore(newScore)
           }
-          console.log(score)
         }
       }
     }
@@ -58,12 +56,11 @@ const Quiz = () => {
     const handleSubmit = (e) => {
       e.preventDefault()
       setFinalScore(score.reduce((a,b) => a+b))
-      console.log(e.target)
     } 
    
 
   return (
-    <div style={{    padding: "40px"   }}>
+    <div style={{ padding: "40px", paddingBottom: "100px" }}>
     <Paper>
     <FormControl>
       <FormControl>
@@ -92,11 +89,10 @@ const Quiz = () => {
             <form>    
 
               {
-                !questions[0] ? 'str': questions.map((question, i) => {
+                !questions[0] ? '': questions.map((question, i) => {
                   return (
                   <div>
                     <h3>
-
                       Question {i+1}: {question}
                     </h3>
                     <input id={`q${i}o1`} type='radio' name={`question_${i}`} value={options[i][0]} onChange={handleScore}/>
@@ -110,22 +106,14 @@ const Quiz = () => {
                     <br/>
                     <br/>
                     {i == 5 ? <Button variant='contained' type='submit' onClick={handleSubmit}>Submit</Button> :''}
-                    {/* {i == 5?<input type='submit' value='Submit' onClick={handleSubmit}/>: ''} */}
                   </div>
                    )
                   })
-                  
-
               }
-   
             </form>
-        
           </div>
           <div>
-            <h3>
-              Results: {finalScore}/{questions.length}
-
-            </h3>
+            {finalScore ? <h3>Results: {finalScore}/{questions.length}</h3> : ""}
           </div>
          </div>
     </div>

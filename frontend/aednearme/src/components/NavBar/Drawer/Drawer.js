@@ -49,6 +49,13 @@ const useStyles = makeStyles(() => ({
 function DrawerComponent() {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const handleLogout = () => {
+    sessionStorage.clear()
+    alert('You have been logged out')
+    window.location.reload()
+  }
+
   return (
     <>
       <Drawer 
@@ -98,7 +105,11 @@ function DrawerComponent() {
 
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/login" className={classes.link}>Signin</Link>
+            {
+                sessionStorage.getItem('accessToken') ?
+                <Link to="/" onClick={handleLogout} className={classes.link}>Logout</Link> :
+                <Link to="/login" className={classes.link}>Login</Link>
+              }
             </ListItemText>
           </ListItem>
 

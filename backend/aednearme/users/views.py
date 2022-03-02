@@ -74,8 +74,8 @@ def get_by_username(request, username):
     serializer = UserSerializer(find)
     return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
-def hello_world(request):
-    if request.method == 'POST':
-        return Response({"message": "Got some data!", "data": request.data})
-    return Response({"message": "Hello, world!"})
+# @api_view(['GET', 'POST'])
+# def hello_world(request):
+#     if request.method == 'POST':
+#         return Response({"message": "Got some data!", "data": request.data})
+#     return Response({"message": "Hello, world!"})

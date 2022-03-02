@@ -1,0 +1,11 @@
+#info-window{
+    color: #000000;
+    width: "200px";
+    
+}
+
+#info-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

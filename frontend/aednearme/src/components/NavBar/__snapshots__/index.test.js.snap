@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should take a snapshot 1`] = `
+<DocumentFragment>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary makeStyles-appbar-12 mui-fixed MuiPaper-elevation4"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <div
+        class="makeStyles-root-7"
+      >
+        <div
+          class=""
+        >
+          <a
+            class="makeStyles-logo-9"
+            href="/"
+          >
+            AED 
+            <br />
+             nearMe 
+          </a>
+        </div>
+        <div
+          class="makeStyles-navlinks-8"
+        >
+          <a
+            class="makeStyles-link-10"
+            href="/"
+          >
+            Home
+          </a>
+          <div>
+            <span
+              aria-haspopup="true"
+              data-testid="span"
+              id="basic-button"
+              style="color: rgb(255, 255, 255); font-size: 20px; cursor: pointer; margin-left: 20px; font-weight: bold;"
+            >
+              AED
+            </span>
+          </div>
+          <div>
+            <span
+              aria-haspopup="true"
+              data-testid="span"
+              id="basic-button"
+              style="color: rgb(255, 255, 255); font-size: 20px; cursor: pointer; margin-left: 20px; font-weight: bold;"
+            >
+              CPR
+            </span>
+          </div>
+          <div>
+            <span
+              aria-haspopup="true"
+              data-testid="span"
+              id="basic-button"
+              style="color: rgb(255, 255, 255); font-size: 20px; cursor: pointer; margin-left: 20px; font-weight: bold;"
+            >
+              Choking
+            </span>
+          </div>
+          <div>
+            <span
+              aria-haspopup="true"
+              data-testid="span"
+              id="basic-button"
+              style="color: rgb(255, 255, 255); font-size: 20px; cursor: pointer; margin-left: 20px; font-weight: bold;"
+            >
+              Education Hub
+            </span>
+          </div>
+          <a
+            class="makeStyles-link-10"
+            href="/login"
+          >
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;

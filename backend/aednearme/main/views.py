@@ -22,7 +22,7 @@ def get_all_defibs(request):
 
 
 @api_view(['POST'])
-# @login_required
+@login_required
 def create_defib(request):
     # return HttpResponse('Hello World!')
     user_id = User.objects.get(username=request.data['username'])
