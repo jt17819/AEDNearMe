@@ -7,31 +7,30 @@ import { Container, makeStyles } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: theme.spacing(2),
-  
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '300px',
-      },
-      '& .MuiButtonBase-root': {
-        margin: theme.spacing(2),
-      },
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: theme.spacing(2),
+
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '300px',
     },
+    '& .MuiButtonBase-root': {
+      margin: theme.spacing(2),
+    },
+  },
 
 
-    title: {
-        paddingBottom: '5px',
-      },
-    
-      text: {
-        fontSize: '16px'
-      }, 
-    
+  title: {
+    paddingBottom: '5px',
+  },
+  
+  text: {
+    fontSize: '16px'
+  }, 
 
 }));
 
@@ -85,12 +84,13 @@ const Login = () => {
       <CssBaseline /> 
 
       <Container 
-        className="pb-5" 
         style={{
           paddingBottom: "10px",
-          paddingTop: "10px"
+          paddingTop: "10px",
+          alignItems: 'center', 
+          maxWidth: 400 , 
+
           }}
-        sx={{ display: 'flex', alignItems: 'center', maxWidth: 600  }}
 
         > 
 
@@ -123,7 +123,11 @@ const Login = () => {
               />
 
               <FormControl>
-                <Button variant="contained" onClick={handleLogin}>Login</Button>
+                <Button 
+                  className={classes.btn_login}
+                  variant="contained" 
+                  onClick={handleLogin}
+                >Login</Button>
               </FormControl>
         
               New user? 
