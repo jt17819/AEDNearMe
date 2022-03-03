@@ -8,6 +8,7 @@ import Choking from "./pages/Choking/Choking";
 
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+
 import Upload from "./pages/Upload/Upload";
 import FAQ from "./pages/FAQ/FAQ";
 

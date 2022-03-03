@@ -64,10 +64,11 @@ const Home = () => {
   return (
     <Fragment>
 
-      <Container className="pb-5" style={{
-        paddingBottom: "100px",
-        paddingTop: "20px"
-      }}>
+      <Container  
+        style={{
+          paddingBottom: "80px",
+          paddingTop: "20px"
+        }}>
         <Grid container spacing={4}>
 
           <Grid item md={5} >
@@ -87,9 +88,6 @@ const Home = () => {
             <p className={classes.text} >
             Most of us have seen these units at airports, hospitals, schools, government buildings, nursing homes, first aid stations and even in our workplaces — But do we remember where we seen them ?
             </p>
-
-
-
 
             <div className={classes.btn_box}>
               <Button 
