@@ -81,7 +81,7 @@ export const Footer = ({ setValue, setSelectedIndex }) => {
               className={classes.item}
             >
               <MarkEmailUnreadIcon fontSize="large" className={classes.snsIcon} />
-              <p>eMail us if any query: <br /> info@AEDnearMe.com </p>
+              <p>Contact us <br /> Email: info@AEDnearMe.com </p>
             </Grid>
 
 
@@ -95,7 +95,7 @@ export const Footer = ({ setValue, setSelectedIndex }) => {
             >
             <CopyrightIcon className={classes.snsIcon} />
 
-              <p>2022 <br /> by Snake in the Flask </p>
+              <p>2022 <br /> by Snake in a Flask </p>
             </Grid>
           </Grid>
         </Grid>

@@ -3,6 +3,24 @@ import { GoogleMap, useLoadScript, Marker, InfoWindow, LoadScript } from "@react
 import mapStyles from './mapStyles';
 import axios from 'axios'
 import './MainMap.css'
+import { Button, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles(theme => ({
+  
+  button: {
+    display: 'flex',
+    backgroundColor: 'red',
+    color: 'white',
+    justifyContent: 'center',
+    margin: '10px auto',
+    '&:hover': {
+      background: "green",
+    },
+  },
+
+  
+
+}));
 
 
 const MainMap = () => {
@@ -13,6 +31,7 @@ const MainMap = () => {
   const [newLng, setNewLng] = useState();
   const [currentLat, setCurrentLat] = useState();
   const [currentLong, setCurrentLong] = useState();
+  const [currentAddress, setCurrentAddress] = useState();
 
   useEffect(() => {
     try{
@@ -36,6 +55,20 @@ const MainMap = () => {
       lng: newLng ? newLng : currentLong ? currentLong : -0.13546533232026148
   };
 
+  const here =  {
+    lat: currentLat ? currentLat : 51.49676339763987,
+    lng: currentLong ? currentLong : -0.13546533232026148
+  }
+ const getAddress = async () => {
+   const get_address = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${here.lat},${here.lng}&key=AIzaSyATeYFTD2ha1aawscSrtZxJfJ3m89DB_JU`)
+   console.log(get_address)
+   const current_address = await get_address.data.results[0].formatted_address
+  //  const formatted_current_address = current_address.split(',').join('').split(' ').join('+');
+   setCurrentAddress(current_address)
+  }
+
+  getAddress()
+  
   const options = {
     styles: mapStyles,
     zoomControl: true
@@ -77,6 +110,14 @@ const position = aedData.map((aed, index) => {
 
 const [selectedAED, setSelectedAED] = useState(null);
 
+// const icon = {
+//   url: require("./bluepin.png"), // url
+//   scaledSize: new google.maps.Size(50, 50), // scaled size
+//   origin: new google.maps.Point(0,0), // origin
+//   anchor: new google.maps.Point(0, 0) // anchor
+// };
+const classes = useStyles();
+
   return (
     <LoadScript googleMapsApiKey="AIzaSyATeYFTD2ha1aawscSrtZxJfJ3m89DB_JU">
         <GoogleMap 
@@ -84,6 +125,16 @@ const [selectedAED, setSelectedAED] = useState(null);
             zoom={15} 
             center={center} 
             options={options}>
+        <Marker
+          // position={{ lat : 51.49676339763987 , lng : -0.13546533232026148 }}
+          position={here}
+          icon={{
+            url: require("./bluepinsmall.png"), // url
+            // scaledSize: new google.maps.Size(50, 50), // scaled size
+            // origin: new google.maps.Point(0,0), // origin
+            // anchor: new google.maps.Point(0, 0) // anchor
+          }}
+        />
           {position.map((aed) => {
             return <Marker 
               key={aed.id}
@@ -102,7 +153,8 @@ const [selectedAED, setSelectedAED] = useState(null);
               setNewLng(selectedAED.long)
             }}>
             <div id="info-window">
-            <img id="info-image" width={"200px"} src={selectedAED.photo_url}/>
+              <img id="info-image" width={"200px"} src={selectedAED.photo_url}/>
+              <a href={`https://www.google.co.uk/maps/dir/${currentAddress}/${selectedAED.address}`} target='_blank'><Button className={classes.button} variant="contained">GET DIRECTIONS</Button></a>
               <ul>
                 <li>Address: {selectedAED.address}</li>
                 <li>Latitude: {selectedAED.lat}</li>

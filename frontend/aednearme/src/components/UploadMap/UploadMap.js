@@ -35,6 +35,8 @@ const UploadMap = () => {
       lng: markers[0] ? markers[0].lng : -0.1356203
   };
 
+  
+
   const options = {
     styles: mapStyles,
     zoomControl: true
@@ -56,6 +58,11 @@ if('geolocation' in navigator){
   console.log('geolocation not available')
 }
 
+const here =  {
+  lat: currentLat ? currentLat : 51.49676339763987,
+  lng: currentLong ? currentLong : -0.13546533232026148
+}
+
 const position = aedData.map((aed, index) => {
     return {
       lat: parseFloat(aed.lat),
@@ -75,7 +82,7 @@ const [selectedAED, setSelectedAED] = useState(null);
     <LoadScript googleMapsApiKey="AIzaSyATeYFTD2ha1aawscSrtZxJfJ3m89DB_JU">
         <GoogleMap 
             mapContainerStyle={containerStyle} 
-            zoom={11} 
+            zoom={14} 
             center={center} 
             options={options}
             onClick={(event) => {
@@ -87,6 +94,16 @@ const [selectedAED, setSelectedAED] = useState(null);
               },
               ])
             }}>
+              <Marker
+                // position={{ lat : 51.49676339763987 , lng : -0.13546533232026148 }}
+                position={here}
+                icon={{
+                  url: require("./bluepinsmall.png"), // url
+                  // scaledSize: new google.maps.Size(50, 50), // scaled size
+                  // origin: new google.maps.Point(0,0), // origin
+                  // anchor: new google.maps.Point(0, 0) // anchor
+                }}
+              />
             {markers.map(marker => <Marker 
                 key={marker.time.toISOString()}
                 position={{ lat: marker.lat, lng: marker.lng}}></Marker>
