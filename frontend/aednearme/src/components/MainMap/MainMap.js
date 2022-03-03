@@ -6,7 +6,7 @@ import './MainMap.css'
 
 
 const MainMap = () => {
-  const baseUrl = "http://127.0.0.1:8000"
+  const baseUrl = "https://aednearme-backend.herokuapp.com"
 
   const [aedData, setAedData] = useState([])
   const [newLat, setNewLat] = useState();
@@ -32,8 +32,8 @@ const MainMap = () => {
 
   // Hard coded center at Futureproof
   const center = {
-      lat: newLat ? newLat : currentLat,
-      lng: newLng ? newLng : currentLong
+      lat: newLat ? newLat : currentLat ? currentLat : 51.49676339763987,
+      lng: newLng ? newLng : currentLong ? currentLong : -0.13546533232026148
   };
 
   const options = {
@@ -48,6 +48,7 @@ if('geolocation' in navigator){
     setCurrentLat(currentLat)
     const currentLong = position.coords.longitude;
     setCurrentLong(currentLong)
+    console.log(center)
   })
 } else {
   console.log('geolocation not available')
@@ -62,7 +63,8 @@ const position = aedData.map((aed, index) => {
       postCode: aed.post_code,
       what3words: aed.what3words_link
     }
-})
+  })
+  
   
 // const aedInfo = (lat, long, key) => {
 //     console.log(lat, long);

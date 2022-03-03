@@ -6,7 +6,7 @@ import { textAlign } from '@mui/system';
 import './UploadMap.css'
 
 const UploadMap = () => {
-  const baseUrl = "http://127.0.0.1:8000"
+  const baseUrl = "https://aednearme-backend.herokuapp.com"
 
   const [aedData, setAedData] = useState([])
   const [ markers, setMarkers ] = useState([])

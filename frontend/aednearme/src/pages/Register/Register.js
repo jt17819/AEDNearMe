@@ -47,14 +47,14 @@ const Register = () => {
             "Content-Type": "application/json"
           }),
     }
-    const result = await axios.post('http://localhost:8000/users/register/', data, options)
+    const result = await axios.post('https://aednearme-backend.herokuapp.com/users/register/', data, options)
     // console.log(result)
 
     if (result.status !== 201) {
         alert('Server Error: failed to register user')
     }
 
-    const result2 = await axios.post('http://localhost:8000/users/login/', {"username": username, "password": password}, options)
+    const result2 = await axios.post('https://aednearme-backend.herokuapp.com/users/login/', {"username": username, "password": password}, options)
     // console.log(result2)
 
     sessionStorage.setItem('accessToken', result2.data.access)

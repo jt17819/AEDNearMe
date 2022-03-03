@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 const Quiz = () => {
     let data 
-    const baseUrl = 'http://localhost:8000/quiz/'
+    const baseUrl = 'https://aednearme-backend.herokuapp.com/quiz/'
     const [category, setCategory] = useState()
     const [questions, setQuestions] = useState([])
     const [correctAnswer, setCorrectAnswer] = useState([])

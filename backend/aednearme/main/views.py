@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Defib
 from .serializers import DefibSerializer
@@ -22,8 +23,9 @@ def get_all_defibs(request):
 
 
 @api_view(['POST'])
-@login_required
+# @login_required
 def create_defib(request):
+    permission_classes = (IsAuthenticated,)
     # return HttpResponse('Hello World!')
     user_id = User.objects.get(username=request.data['username'])
     new_defib = Defib.objects.create(

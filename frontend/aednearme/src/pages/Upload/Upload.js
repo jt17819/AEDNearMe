@@ -37,34 +37,62 @@ const Upload = () => {
   const [ comments, setComments ] = useState("");
 
   const handleSubmit = async () => {
-      const data = {
-          "username": "trevor",
-          "address": "11-19 Artillery Row",
-          "post_code": "SW7059G",
-          "what3words_link": "http://what3words.com/fruity.song.plant",
-          "lat": latitude,
-          "long": longitude,
-          "access": access,
-          "approved": false,
-          "photo_url": uploadImage64,
-          "comments": comments
-      }
-      const options = {
-          headers: new Headers({
-              "Content-Type": "application/json",
-            //   Authorization: "Bearer "+token 
-            }),
-      }
-      if(!latitude || !longitude || !access || !comments){
-          return alert("Please fill in all fields")
-      }
-      if(sessionStorage.length == 0){
-          return alert("Please log in to submit a new AED")
-      }
+    const get_address = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyATeYFTD2ha1aawscSrtZxJfJ3m89DB_JU`)
+    const get_w3w = await axios.get(`https://api.what3words.com/v3/convert-to-3wa?coordinates=${latitude}%2C${longitude}&key=V89M1TE1`)
+    console.log(get_w3w.data.words)
+    // https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyATeYFTD2ha1aawscSrtZxJfJ3m89DB_JU
+    const data = {
+        "username": sessionStorage.getItem('username'),
+        "address": get_address.data.results[0].formatted_address,
+        "post_code": get_address.data.results[0].address_components[get_address.data.results[0].address_components.length-1].long_name,
+        "what3words_link": `http://what3words.com/${get_w3w.data.words}`,
+        "lat": latitude,
+        "long": longitude,
+        "access": access,
+        "approved": false,
+        "photo_url": uploadImage64,
+        "comments": comments
+    }
 
-      const result = await axios.post('http://localhost:8000/aed/upload/', data, options)
+    const new_token = await axios.post('https://aednearme-backend.herokuapp.com/users/login/refresh/', {refresh: sessionStorage.getItem('refreshToken')}, {"Content-Type": "application/json"})
+    console.log(new_token.data.access)
+    sessionStorage.setItem('accessToken', new_token.data.access)
+
+    const options = {
+        headers: new Headers({
+            "Content-Type": "application/json",
+            Authorization: "Bearer "+sessionStorage.getItem('accessToken') 
+            }),
+    }
+    if(!latitude || !longitude || !access || !comments){
+        return alert("Please fill in all fields")
+    }
+    if(sessionStorage.length == 0){
+        return alert("Please log in to submit a new AED")
+    }
+      try{
+          console.log(data)
+    const result = await axios.post('https://aednearme-backend.herokuapp.com/aed/upload/', data, options)
+    console.log(result)
+      } catch(err) {
+          console.log(err)
+      }
+    //     // if(result.status == 401){
+    //     const new_token = await axios.post('http://localhost:8000/users/login/refresh/', {refresh: sessionStorage.getItem('refreshToken')}, options)
+    //     console.log(new_token.data.access)
+    //     sessionStorage.setItem('accessToken', new_token.data.access)
+    //     return alert("new token issued")
+    //     }
+    // } else {
+    //     console.log(results.status)
+    //     return alert("Failed to submit please try again")
+    // }
+      
       if(result.status == 200){
           return alert("Your location has been submitted to be approved")
+      } else {
+          console.log(results.status)
+          return alert("Failed to submit please try again")
       }
   }  
 

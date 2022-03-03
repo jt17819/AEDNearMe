@@ -1,21 +1,24 @@
 POST http://localhost:8000/aed/upload/
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1ODExNTExLCJpYXQiOjE2NDU4MTEyMTEsImp0aSI6ImMzY2ZjZTAxMzk3NTQ0NGJiYTMzMGMxOGZkZGVhNWVkIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJ0cmV2b3IifQ.efhNEWKRtesQn9RZ_xg319mcV0gdHm_9tSs3wJhMJIw
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2MzA3Nzg2LCJpYXQiOjE2NDYzMDY4NDQsImp0aSI6IjhmMGUxYmM1MjhiYTRjMjZiOWVkZWVjYTNhNjUyYTQ2IiwidXNlcl9pZCI6MX0.TuBzjq3C6cDe3qHxod7l5V3Y8X54xkI4OTBxCAEW0sY
 
 {
     "username": "trevor",
-    "long": "51.468022",
-    "lat": "-0.093773",
+    "long": "51.18051975524143",
+    "lat": "3.197525319961292",
     "photo_url": "",
     "access": "public",
-    "approved": "True"
+    "approved": "True",
+    "address": "test",
+    "post_code": "test",
+    "what3words_link": "https://www.google.com",
+    "comments": "test"
 }
 
 ###
-GET
 
-GET http://localhost:8000/aed/
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1OTc5NDI4LCJpYXQiOjE2NDU5NzkxMjgsImp0aSI6IjY2YTMxZGYyMDFiYzRmN2ZiOGQwYWQ2ZWE2NmVmMmIxIiwidXNlcl9pZCI6MX0.C89Z_xppHLvUB0CR0fubFRWOamOyKJQ87qvf318CUqM
+GET https://aednearme-backend.herokuapp.com/aed/
+# Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1OTc5NDI4LCJpYXQiOjE2NDU5NzkxMjgsImp0aSI6IjY2YTMxZGYyMDFiYzRmN2ZiOGQwYWQ2ZWE2NmVmMmIxIiwidXNlcl9pZCI6MX0.C89Z_xppHLvUB0CR0fubFRWOamOyKJQ87qvf318CUqM
 
 
 ###
@@ -38,11 +41,11 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/users/login/refresh
+POST http://localhost:8000/users/login/refresh/
 Content-Type: application/json
 
 {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjA2NTUyOCwiaWF0IjoxNjQ1OTc5MTI4LCJqdGkiOiJlYWMyYWVhYjE5OWE0YjY2OTQyN2FlYTkyNTA5ZDIzMiIsInVzZXJfaWQiOjF9.qJIGF59TpF11hp-10RcawFKkFzQ6idukaDNBuBPJIGI"
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjM5MzI0NCwiaWF0IjoxNjQ2MzA2ODQ0LCJqdGkiOiJiOTg5ZmY4ZGNkNDM0NjA1OWZlYjNhYzI5MGQ1ODdiYSIsInVzZXJfaWQiOjF9.tHiNMjwFFJOroWPczqVmgQCQThsYy-WynppAT-vCkMY"
 }
 
 

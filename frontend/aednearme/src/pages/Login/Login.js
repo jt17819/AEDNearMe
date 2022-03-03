@@ -59,7 +59,7 @@ const Login = () => {
           }),
     }
 
-    const result = await axios.post('http://localhost:8000/users/login/', data, options)
+    const result = await axios.post('https://aednearme-backend.herokuapp.com/users/login/', data, options)
     // console.log(result)
 
     sessionStorage.setItem('accessToken', result.data.access)
