@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     //location of the image: behind / infront
     zIndex: 1302,
-    padding: "5px 0",
+    padding: "1px 0",
     
   },
 

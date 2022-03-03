@@ -6,40 +6,9 @@ import React, { Fragment } from 'react'
 
 const useStyles = makeStyles(() => ({
 
-  title: {
-    paddingBottom: '5px',
-  },
 
   text: {
     fontSize: '16px'
-  },
-
-  btn_box:{
-    marginTop: "30px",
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-
-  primary: {
-    border: "none",
-    background: "#273746",
-    color: '#fff',
-    borderRadius: "0px",
-    padding: "10px 20px",
-    "&:hover": {
-      background: "#34495E",
-    }
-  },
-  
-  secondary: {
-    border: "none",
-    background: "aliceblue",
-    color: "#ba181b",
-    borderRadius: "0px",
-    padding: "10px 20px",
-    "&:hover": {
-      background: "aliceblue",
-    }
   },
 
 }));
@@ -51,10 +20,11 @@ const AEDhowto = () => {
   return (
     <Fragment>
 
-      <Container className="pb-5" style={{
-        paddingBottom: "100px",
-        paddingTop: "20px"
-      }}>
+      <Container 
+        style={{
+          paddingBottom: "80px",
+          paddingTop: "5px"
+        }}>
       
       <h1 className={classes.title} >How to use an AED</h1>
 

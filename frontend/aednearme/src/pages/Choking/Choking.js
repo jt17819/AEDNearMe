@@ -6,16 +6,11 @@ import './Choking.css'
 
 const useStyles = makeStyles(() => ({
 
-  title: {
-    paddingBottom: '5px',
-  },
-
   text: {
     fontSize: '16px'
   },
 
   btn_box:{
-    marginTop: "30px",
     display: 'flex',
     justifyContent: 'space-between',
   },
@@ -61,14 +56,14 @@ const Choking = () => {
 
     <Fragment>
 
-    <Container className="pb-5" style={{
-      paddingBottom: "70px",
-      paddingTop: "10px"
+    <Container style={{
+      paddingBottom: "80px",
+      paddingTop: "5px"
       }}> 
 
       <h1 className={classes.title} >Learn first aid for someone who is choking</h1>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={1}>
           <Grid item md={5} >
             <h3 className={classes.text}>
             Step 1: If someone is choking, encourage them to cough.
@@ -91,12 +86,10 @@ const Choking = () => {
             </h3>
 
 
-            <div className={classes.btn_box}>
               <Button variant="contained" 
                 className={classes.primary}  
                 onClick={goToCPRhowTo}
               >CPR: How to give</Button>
-            </div>
 
 
             <h3>Read more here at <a id="choking-link" href="https://www.sja.org.uk/get-advice/first-aid-advice/choking/" target="_blank">St. John's Ambulance</a>

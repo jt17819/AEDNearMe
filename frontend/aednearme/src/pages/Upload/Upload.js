@@ -9,22 +9,11 @@ import UploadMap from '../../components/UploadMap/UploadMap'
 
 const useStyles = makeStyles(theme => ({
   
-    
     root: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        padding: theme.spacing(2),
-    
-        '& .MuiTextField-root': {
-          margin: theme.spacing(1),
-          width: '300px',
-        },
-        '& .MuiButtonBase-root': {
-          margin: theme.spacing(2),
-        },
-      },
+    },
   
 }));
 
@@ -145,8 +134,8 @@ const encodeImageFileAsURL = async (e) => {
   return (
 
     <Fragment>
-        <Container className="pb-5" 
-            spacing={1}
+        <Container
+           
             style={{
             paddingBottom: "100px",
             paddingTop: "20px",
@@ -154,26 +143,29 @@ const encodeImageFileAsURL = async (e) => {
 
             <Grid 
                 container spacing={4} 
-                spacing={10}>
+                >
 
                 <Grid
                     item
                     md={8}
                     xs={12}
                     className=""
-                    >
-                        {sessionStorage.length !== 0 ? <h1>Welcome {sessionStorage.username}</h1> : <h1>Please log in to submit a new AED</h1>  }{render} 
+                    > 
+                    {sessionStorage.length !== 0 ? <h1>Welcome {sessionStorage.username}</h1> : <h1>Please log in to submit a new AED</h1>  }{render} 
+                    
+                    <div style={{textAlign: "center"}}>
+                        <h3>Click on the map to autofill coordinates</h3>
+                    </div>
                 </Grid>
 
-                <Grid item md={4} 
-                style={{ paddingTop: "14px", paddingBottom: "100px"}}
-                    >
-
-                    <h1 className={"display-2 mb-5 font-weight-bold" }>Submit new AED</h1>
-
+                <Grid 
+                    item md={4} 
+                    className={classes.root}>
+                    
+                    <h1 className={"display-2 mb-5 font-weight-bold" }>Add new location:</h1>
                     <Paper 
                         component="form"
-                        sx={{ p: '20px', display: 'flex', alignItems: 'center', maxWidth: 400  }}
+                        sx={{ p: '10px', display: 'flex', alignItems: 'center', maxWidth: 400  }}
                         style={{ background: 'rgba(0,0,0,0.3)' }}   
                         >
 
@@ -182,7 +174,6 @@ const encodeImageFileAsURL = async (e) => {
                         <FormControl>
                             <form className={classes.root}> 
                                 <Input onChange={(e) => {encodeImageFileAsURL(e)}} type="file" />
-
                                 <Button variant="raised"
                                 >Upload img</Button> 
                             </form>

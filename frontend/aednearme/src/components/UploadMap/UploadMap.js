@@ -26,7 +26,7 @@ const UploadMap = () => {
 
   const containerStyle = {
     width: '100%',
-    height: '70vh',
+    height: '65vh',
   };
 
   // Hard coded center at Futureproof
@@ -121,10 +121,7 @@ const [selectedAED, setSelectedAED] = useState(null);
         
         </GoogleMap>
 
-        
-    <div style={{textAlign: "center"}}>
-      <h3>Click on the map to autofill coordinates</h3>
-    </div>
+
     </LoadScript>
   )}
 }
