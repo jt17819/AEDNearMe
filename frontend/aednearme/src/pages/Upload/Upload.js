@@ -43,10 +43,18 @@ const Upload = () => {
               "Content-Type": "application/json",
             //   Authorization: "Bearer "+token 
             }),
-          
       }
+      if(!latitude || !longitude || !access || !comments){
+          return alert("Please fill in all fields")
+      }
+      if(sessionStorage.length == 0){
+          return alert("Please log in to submit a new AED")
+      }
+
       const result = await axios.post('http://localhost:8000/aed/upload/', data, options)
-      console.log(result)
+      if(result.status == 200){
+          return alert("Your location has been submitted to be approved")
+      }
   }  
 
   const handleLat = (e) => setLatitude(e.target.value);
@@ -115,13 +123,11 @@ const encodeImageFileAsURL = async (e) => {
                     xs={12}
                     className=""
                     > 
-                    {render} 
+                    {sessionStorage.length !== 0 ? <h1>Welcome {sessionStorage.username}</h1> : <h1>Please log in to submit a new AED</h1>  }{render} 
                     
                     <div style={{textAlign: "center"}}>
                         <h3>Click on the map to autofill coordinates</h3>
                     </div>
-
-
                 </Grid>
 
                 <Grid 
